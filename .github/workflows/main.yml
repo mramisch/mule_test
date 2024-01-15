@@ -13,7 +13,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/hello/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
     - name: Set up JDK 1.8
@@ -45,7 +45,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.m2/repository
-        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/hello/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
     - uses: actions/download-artifact@v3
