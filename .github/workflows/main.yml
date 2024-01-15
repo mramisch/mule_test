@@ -27,13 +27,13 @@ jobs:
       run: |
         artifactName1=$(ls hello/target/*.jar | head -1)
         commitHash=$(git rev-parse --short "$GITHUB_SHA")
-        artifactName2=$(ls hello/target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
+        artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
         mv $artifactName1 $artifactName2
     - name: Upload artifact 
       uses: actions/upload-artifact@v3
       with:
           name: artifacts
-          path: hello/target/*.jar
+          path: target/*.jar
         
   deploy:
     needs: build
@@ -56,7 +56,7 @@ jobs:
         USERNAME: ${{ secrets.anypoint_platform_username }}
         PASSWORD: ${{ secrets.anypoint_platform_password }}
       run: |
-        artifactName=hello/$(ls *.jar | head -1)
+        artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Danypoint.username="$USERNAME" \
