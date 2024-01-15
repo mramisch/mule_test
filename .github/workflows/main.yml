@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           name: artifacts
-          path: target/*.jar
+          path: hello/target/*.jar
         
   deploy:
     needs: build
